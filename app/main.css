@@ -1,0 +1,12 @@
+html {
+    border-box: box-sizing;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+div {
+    color: red;
+    font-weight: bold;
+}
