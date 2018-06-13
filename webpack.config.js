@@ -1,5 +1,6 @@
 const webpack  = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const cleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
     entry: __dirname +"/app/main.js",
     output: {
@@ -19,7 +20,7 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                 },
-                exclude: /node_modules/
+                exclude: /node_modu.les/
             },
             {
                 test: /\.css$/,
@@ -40,9 +41,14 @@ module.exports = {
     },
     plugins: [
         new webpack.BannerPlugin('awhy的webpack study'),
+        new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin({
             template: __dirname+'/app/index.tmpl.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new cleanWebpackPlugin('build/*.*',{
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     ]
 }
